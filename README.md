@@ -82,9 +82,9 @@ Estimate of time needed to complete: 120 minutes
 
 Start time: 2:45pm
 
-Finish time: 
+Finish time: 5:00pm
 
-Actual time needed to complete:
+Actual time needed to complete: 135 minutes
 
 ################################################################
 
@@ -92,9 +92,9 @@ Name of feature: Errors
 
 Estimate of time needed to complete: 120 minutes
 
-Start time: 
+Start time: 5:00pm
 
-Finish time: 
+Finish time: 5:30pm 
 
 Actual time needed to complete:
 

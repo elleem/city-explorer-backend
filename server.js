@@ -17,19 +17,19 @@ app.use(cors());
 const PORT = process.env.PORT || 3002;
 
 //home route
-app.get("/", (request, response) => {
-  response.send("test");
+app.get('/', (request, response) => {
+  response.send('test');
 });
 
 //three parameters here
-app.get("/weather", (request, response, next) => {
+app.get('/weather', (request, response, next) => {
   try {
     //const {lat,lon} = request.query;
     const searchQuery = request.query.searchQuery;
-    console.log("query", request.query);
+    console.log('query', request.query);
     const weatherForecast = new Forecast(searchQuery);
     const forecastSearch = weatherForecast.weatherSearch();
-    response.send(forecastSearch);
+    response.status(200).send(forecastSearch);
   } catch (error) {
     next(error);
   }
@@ -54,7 +54,7 @@ class Forecast {
 
 app.use((error, request, response, next) => {
   console.log(error);
-  response.send(error);
+  response.status(500).send(error);
 });
 
 app.listen(PORT, console.log(`listen on port ${PORT}`));

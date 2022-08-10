@@ -4,6 +4,7 @@
 const express = require('express');
 const cors = require('cors');
 require('dotenv').config();
+//const axios = require('axios'); 
 const weather = require('./data/weather.json');
 const { response } = require('express');
 
@@ -53,8 +54,8 @@ class Forecast {
 }
 
 app.use((error, request, response, next) => {
-  console.log(error);
+  //console.log(error);
   response.status(500).send(error);
 });
 
-app.listen(PORT, console.log(`listen on port ${PORT}`));
+app.listen(PORT, () => console.log(`listen on port ${PORT}`));

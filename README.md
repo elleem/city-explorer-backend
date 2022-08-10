@@ -101,11 +101,46 @@ Actual time needed to complete: 30 minutes
 ################################################################
 
 ## Whiteboard of WRRC
-Collaboration with
+Collaboration with Alejandro Rivera
 
-![Lab 08 Whiteboard](images/)
+![Lab 08 Whiteboard](data/images/lab00miro.jpg)
 
 ## Features for Lab 08
+
+Name of feature: Call from weather API
+
+Estimate of time needed to complete: 120 minutes
+
+Start time: 
+
+Finish time: 
+
+Actual time needed to complete: 
+
+################################################################
+
+Name of feature: Call from movie API
+
+Estimate of time needed to complete: 120 minutes
+
+Start time: 
+
+Finish time: 
+
+Actual time needed to complete: 
+
+################################################################
+
+Name of feature: Deploy to Heroku
+Estimate of time needed to complete: 120 minutes
+
+Start time: 
+
+Finish time: 
+
+Actual time needed to complete: 
+
+################################################################
 
 ## Whiteboard of WRRC
 Collaboration with

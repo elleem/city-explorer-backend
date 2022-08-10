@@ -4,9 +4,9 @@
 const express = require('express');
 const cors = require('cors');
 require('dotenv').config();
-//const axios = require('axios'); 
-const weather = require('./data/weather.json');
-const { response } = require('express');
+const axios = require('axios'); 
+const weather = require('./weather');
+const { response, query } = require('express');
 
 //server
 const app = express();
@@ -28,6 +28,7 @@ app.get('/weather', (request, response, next) => {
     //const {lat,lon} = request.query;
     const searchQuery = request.query.searchQuery;
     console.log('query', request.query);
+    const url = `https://api.weatherbit.io/v2.0/forecast/daily?lat=${lat}&lon=${lon}&searchQuery=${searchQuery}`; 
     const weatherForecast = new Forecast(searchQuery);
     const forecastSearch = weatherForecast.weatherSearch();
     response.status(200).send(forecastSearch);

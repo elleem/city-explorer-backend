@@ -1,7 +1,7 @@
 # City Explorer
 
 **Author**: Lauren Main
-**Version**: 1.0.4
+**Version**: 1.0.5
 
 ## Overview
 [View my Live site at netlify](https://elleemcityexplorer.netlify.app/)<br>
@@ -111,11 +111,11 @@ Name of feature: Call from weather API
 
 Estimate of time needed to complete: 120 minutes
 
-Start time: 
+Start time: 7:00pm
 
-Finish time: 
+Finish time: 10:00pm
 
-Actual time needed to complete: 
+Actual time needed to complete: 180 minutes
 
 ################################################################
 
@@ -132,6 +132,7 @@ Actual time needed to complete:
 ################################################################
 
 Name of feature: Deploy to Heroku
+
 Estimate of time needed to complete: 120 minutes
 
 Start time: 

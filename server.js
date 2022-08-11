@@ -23,11 +23,12 @@ app.get('/', (request, response) => {
 });
 
 app.get('/weather', getForecast); 
+// app.get('/movies', getMovies); 
 
 async function getForecast (request, response, next) {
   const {lat,lon} = request.query;
   // console.log('query', request);
-  const url = `https://api.weatherbit.io/v2.0/forecast/daily?days=3&lat=${lat}&lon=${lon}&key=${process.env.WEATHER_API_KEY}`; 
+  const url = `https://api.weatherbit.io/v2.0/forecast/daily?days=5&units=I&lat=${lat}&lon=${lon}&key=${process.env.WEATHER_API_KEY}`; 
   try{
     const weatherResponse = await axios.get(url);
     console.log('results', weatherResponse.data);
@@ -43,7 +44,7 @@ async function getForecast (request, response, next) {
 class Forecast {
   constructor(obj) {
     this.date = obj.datetime;
-    this.description = 'Low of'+ obj.low_temp + ', High of' + obj.high_temp + 'with' + obj.weather.description.toLowerCase();
+    this.description = 'Low of '+ obj.low_temp + ', High of ' + obj.high_temp + ' with ' + obj.weather.description.toLowerCase();
   }
 }
 

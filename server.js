@@ -5,7 +5,7 @@ const express = require('express');
 const cors = require('cors');
 require('dotenv').config();
 const axios = require('axios'); 
-const weather = require('./weather');
+//const weather = require('./weather');
 const { response, query } = require('express');
 
 //server
@@ -22,37 +22,31 @@ app.get('/', (request, response) => {
   response.send('test');
 });
 
-//three parameters here
-app.get('/weather', (request, response, next) => {
-  try {
-    //const {lat,lon} = request.query;
-    const searchQuery = request.query.searchQuery;
-    console.log('query', request.query);
-    const url = `https://api.weatherbit.io/v2.0/forecast/daily?lat=${lat}&lon=${lon}&searchQuery=${searchQuery}`; 
-    const weatherForecast = new Forecast(searchQuery);
-    const forecastSearch = weatherForecast.weatherSearch();
-    response.status(200).send(forecastSearch);
+app.get('/weather', getForecast); 
+
+async function getForecast (request, response, next) {
+  const {lat,lon} = request.query;
+  // console.log('query', request);
+  const url = `https://api.weatherbit.io/v2.0/forecast/daily?days=3&lat=${lat}&lon=${lon}&key=${process.env.WEATHER_API_KEY}`; 
+  try{
+    const weatherResponse = await axios.get(url);
+    console.log('results', weatherResponse.data);
+    const weatherArray = weatherResponse.data.data.map(weather => new Forecast(weather));
+    console.log('TEST', weatherArray);
+    response.status(200).send(weatherArray);
   } catch (error) {
+    console.log('am I running?');
     next(error);
   }
-});
+}
 
 class Forecast {
-  constructor(searchQuery) {
-    const cityData = weather.find(
-      (forecast) =>
-        forecast.city_name.toLowerCase() === searchQuery.toLowerCase()
-    );
-    console.log(cityData);
-    this.city = cityData;
-  }
-  weatherSearch() {
-    return this.city.data.map((weather) => ({
-      description: weather.weather.description,
-      date: weather.datetime,
-    }));
+  constructor(obj) {
+    this.date = obj.datetime;
+    this.description = 'Low of'+ obj.low_temp + ', High of' + obj.high_temp + 'with' + obj.weather.description.toLowerCase();
   }
 }
+
 
 app.use((error, request, response, next) => {
   //console.log(error);

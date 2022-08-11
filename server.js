@@ -4,8 +4,9 @@
 const express = require('express');
 const cors = require('cors');
 require('dotenv').config();
-const weather = require('./data/weather.json');
-const { response } = require('express');
+const axios = require('axios'); 
+//const weather = require('./weather');
+const { response, query } = require('express');
 
 //server
 const app = express();
@@ -21,40 +22,36 @@ app.get('/', (request, response) => {
   response.send('test');
 });
 
-//three parameters here
-app.get('/weather', (request, response, next) => {
-  try {
-    //const {lat,lon} = request.query;
-    const searchQuery = request.query.searchQuery;
-    console.log('query', request.query);
-    const weatherForecast = new Forecast(searchQuery);
-    const forecastSearch = weatherForecast.weatherSearch();
-    response.status(200).send(forecastSearch);
-  } catch (error) {
-    next(error);
-  }
-});
+app.get('/weather', getForecast); 
+// app.get('/movies', getMovies); 
 
-class Forecast {
-  constructor(searchQuery) {
-    const cityData = weather.find(
-      (forecast) =>
-        forecast.city_name.toLowerCase() === searchQuery.toLowerCase()
-    );
-    console.log(cityData);
-    this.city = cityData;
-  }
-  weatherSearch() {
-    return this.city.data.map((weather) => ({
-      description: weather.weather.description,
-      date: weather.datetime,
-    }));
+async function getForecast (request, response, next) {
+  const {lat,lon} = request.query;
+  // console.log('query', request);
+  const url = `https://api.weatherbit.io/v2.0/forecast/daily?days=5&units=I&lat=${lat}&lon=${lon}&key=${process.env.WEATHER_API_KEY}`; 
+  try{
+    const weatherResponse = await axios.get(url);
+    console.log('results', weatherResponse.data);
+    const weatherArray = weatherResponse.data.data.map(weather => new Forecast(weather));
+    console.log('TEST', weatherArray);
+    response.status(200).send(weatherArray);
+  } catch (error) {
+    console.log('am I running?');
+    next(error);
   }
 }
 
+class Forecast {
+  constructor(obj) {
+    this.date = obj.datetime;
+    this.description = 'Low of '+ obj.low_temp + ', High of ' + obj.high_temp + ' with ' + obj.weather.description.toLowerCase();
+  }
+}
+
+
 app.use((error, request, response, next) => {
-  console.log(error);
+  //console.log(error);
   response.status(500).send(error);
 });
 
-app.listen(PORT, console.log(`listen on port ${PORT}`));
+app.listen(PORT, () => console.log(`listen on port ${PORT}`));

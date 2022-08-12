@@ -22,8 +22,8 @@ app.get('/', (request, response) => {
   response.send('test');
 });
 
-app.get('/weather', getForecast); 
-app.get('/movies', getMovies); 
+app.get('/weather', getForecast);
+app.get('/movies', getMovies);
 
 async function getForecast (request, response, next) {
   const {lat,lon} = request.query;

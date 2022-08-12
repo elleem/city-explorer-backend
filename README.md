@@ -123,11 +123,11 @@ Name of feature: Call from movie API
 
 Estimate of time needed to complete: 120 minutes
 
-Start time: 
+Start time: 3:00pm 
 
-Finish time: 
+Finish time: 6:00pm
 
-Actual time needed to complete: 
+Actual time needed to complete: 180 minutes
 
 ################################################################
 
@@ -135,11 +135,11 @@ Name of feature: Deploy to Heroku
 
 Estimate of time needed to complete: 120 minutes
 
-Start time: 
+Start time: 9:45pm
 
-Finish time: 
+Finish time: 10:15pm
 
-Actual time needed to complete: 
+Actual time needed to complete: about 30 minutes, over a couple of sessions
 
 ################################################################
 

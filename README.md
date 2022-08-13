@@ -152,11 +152,11 @@ Name of feature: Refactor backend
 
 Estimate of time needed to complete: 120 minutes
 
-Start time:
+Start time: 3:00pm
 
-Finish time: 
+Finish time: 3:30pm
 
-Actual time needed to complete: 
+Actual time needed to complete: 30 minutes
 
 ################################################################
 

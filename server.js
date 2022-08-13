@@ -7,6 +7,7 @@ require('dotenv').config();
 // const axios = require('axios'); 
 const getForecast = require('./weather');
 const getMovies = require('./movies');
+const notFound = require('./notFound'); 
 const { response, query } = require('express');
 
 //server
@@ -30,5 +31,7 @@ app.use((error, request, response, next) => {
 
 app.get('/weather', getForecast);
 app.get('/movies', getMovies);
+
+app.get('*',notFound);
 
 app.listen(PORT, () => console.log(`listen on port ${PORT}`));

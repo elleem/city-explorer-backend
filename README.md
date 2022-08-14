@@ -103,7 +103,7 @@ Actual time needed to complete: 30 minutes
 ## Whiteboard of WRRC
 Collaboration with Alejandro Rivera
 
-![Lab 08 Whiteboard](data/images/lab00miro.jpg)
+![Lab 08 Whiteboard](data/images/lab08miro.jpg)
 
 ## Features for Lab 08
 
@@ -144,11 +144,37 @@ Actual time needed to complete: about 30 minutes, over a couple of sessions
 ################################################################
 
 ## Whiteboard of WRRC
-Collaboration with
+Collaboration with Alejandro Rivera
 
-![Lab 09 Whiteboard](images/)
+![Lab 09 Whiteboard](data/images/lab09miro.jpg)
 
 ## Features for Lab 09
+
+Name of feature: Refactor backend
+
+Estimate of time needed to complete: 120 minutes
+
+Start time: 3:00pm
+
+Finish time: 3:30pm
+
+Actual time needed to complete: 30 minutes
+
+################################################################
+
+Name of feature: Refactor frontend
+
+Estimate of time needed to complete: 120 minutes
+
+Start time: 3:45pm to 6:00pm
+
+Finish time: 
+
+Actual time needed to complete: additional work needed
+
+################################################################
+
+
 
 ## Whiteboard of WRRC
 Collaboration with

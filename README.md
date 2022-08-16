@@ -166,11 +166,11 @@ Name of feature: Refactor frontend
 
 Estimate of time needed to complete: 120 minutes
 
-Start time: 3:45pm to 6:00pm
+Start time: 3:45pm to 6:00pm and 1:30pm to 2:45pm
 
-Finish time: 
+Finish time: 2:45pm
 
-Actual time needed to complete: additional work needed
+Actual time needed to complete: 210 minutes
 
 ################################################################
 

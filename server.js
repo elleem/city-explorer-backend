@@ -4,7 +4,6 @@
 const express = require('express');
 const cors = require('cors');
 require('dotenv').config();
-// const axios = require('axios'); 
 const getForecast = require('./weather');
 const getMovies = require('./movies');
 const notFound = require('./notFound'); 

@@ -5,7 +5,7 @@ const express = require('express');
 const cors = require('cors');
 require('dotenv').config();
 const weather = require('./weather');
-const getMovies = require('./movies');
+const movies= require('./movies');
 const notFound = require('./notFound');
 
 //server
@@ -38,7 +38,17 @@ function getForecast(request, response) {
     .then((summaries) => response.send(summaries))
     .catch((error) => {
       console.error(error);
-      response.status(200).send('Sorry. Something went wrong!');
+      response.status(500).send('Sorry. Something went wrong!');
+    });
+}
+
+function getMovies(request, response) {
+  const cityMovie = request.query.cityMovie;
+  movies(cityMovie)
+    .then((summaries) => response.send(summaries))
+    .catch((error) => {
+      console.error(error);
+      response.status(500).send('Sorry. Something went wrong!');
     });
 }
 

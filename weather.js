@@ -10,7 +10,7 @@ function getForecast(lat,lon) {
   // console.log('query', request);
   const url = `https://api.weatherbit.io/v2.0/forecast/daily?days=5&units=I&lat=${lat}&lon=${lon}&key=${process.env.WEATHER_API_KEY}`;
   if (cache[key] && (Date.now() - cache[key].timestamp < 50000)) {
-    console.log('Cache hit', key);
+    console.log('Weather cache hit', key);
   } else {
     console.log('Cache miss');
     cache[key] = {};
@@ -20,21 +20,6 @@ function getForecast(lat,lon) {
   }
   return cache[key].data;
 }
-//   axios
-//     .get(url)
-//     .then((weatherResponse) => {
-//       console.log('results', weatherResponse.data);
-//       const weatherArray = weatherResponse.data.data.map(
-//         (weather) => new Forecast(weather)
-//       );
-//       console.log('TEST', weatherArray);
-//       response.status(200).send(weatherArray);
-//     })
-//     .catch((error) => {
-//       next(error);
-//       console.log('am I running?');
-//     });
-// }
 
 function parseWeather(weatherResponse) {
   try {

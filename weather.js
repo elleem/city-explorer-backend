@@ -5,11 +5,12 @@ const axios = require('axios');
 
 // async 
 function getForecast(lat,lon) {
+  console.log('made it into getForecast');
   const key = 'weather-'+ lat+ lon; 
   // console.log('query', request);
   const url = `https://api.weatherbit.io/v2.0/forecast/daily?days=5&units=I&lat=${lat}&lon=${lon}&key=${process.env.WEATHER_API_KEY}`;
   if (cache[key] && (Date.now() - cache[key].timestamp < 50000)) {
-    console.log('Cache hit');
+    console.log('Cache hit', key);
   } else {
     console.log('Cache miss');
     cache[key] = {};
@@ -26,12 +27,12 @@ function getForecast(lat,lon) {
 //       const weatherArray = weatherResponse.data.data.map(
 //         (weather) => new Forecast(weather)
 //       );
-//       console.log("TEST", weatherArray);
+//       console.log('TEST', weatherArray);
 //       response.status(200).send(weatherArray);
 //     })
 //     .catch((error) => {
 //       next(error);
-//       console.log("am I running?");
+//       console.log('am I running?');
 //     });
 // }
 
@@ -41,8 +42,8 @@ function parseWeather(weatherResponse) {
       return new Forecast(weather);
     });
     return Promise.resolve(weatherArray);
-  } catch (e) {
-    return Promise.reject(e);
+  } catch (error) {
+    return Promise.reject(error);
   }
 }
 
@@ -50,11 +51,11 @@ class Forecast {
   constructor(obj) {
     this.date = obj.datetime;
     this.description =
-      "Low of " +
+      'Low of ' +
       obj.low_temp +
-      ", High of " +
+      ', High of ' +
       obj.high_temp +
-      " with " +
+      ' with ' +
       obj.weather.description.toLowerCase();
   }
 }

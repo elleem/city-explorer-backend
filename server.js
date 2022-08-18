@@ -4,10 +4,9 @@
 const express = require('express');
 const cors = require('cors');
 require('dotenv').config();
-const getForecast = require('./weather');
+const weather = require('./weather');
 const getMovies = require('./movies');
-const notFound = require('./notFound'); 
-const { response, query } = require('express');
+const notFound = require('./notFound');
 
 //server
 const app = express();
@@ -31,6 +30,16 @@ app.use((error, request, response, next) => {
 app.get('/weather', getForecast);
 app.get('/movies', getMovies);
 
-app.get('*',notFound);
+app.get('*', notFound);
+
+function getForecast(request, response) {
+  const { lat, lon } = request.query;
+  weather(lat, lon)
+    .then((summaries) => response.send(summaries))
+    .catch((error) => {
+      console.error(error);
+      response.status(200).send('Sorry. Something went wrong!');
+    });
+}
 
 app.listen(PORT, () => console.log(`listen on port ${PORT}`));

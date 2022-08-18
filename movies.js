@@ -10,7 +10,7 @@ function getMovies(cityMovie) {
   // console.log('query', request);
   const url = `https://api.themoviedb.org/3/search/movie?api_key=${process.env.MOVIE_API_KEY}&query=${cityMovie}&language=en-US&page=1`;
 
-  if (cache[key] && Date.now() - cache[key].timestamp < 50000) {
+  if (cache[key] && Date.now() - cache[key].timestamp < 3600000) {
     console.log("Movie cache hit");
   } else {
     console.log("Movie cache miss");
